@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Главная :: Каталог товаров</title>
+    </head>
+    <body>
+        <h1>Товары</h1>
+        {% for item in items %}
+        <div>
+            <h2>{{ item.title }}</h2>
+            <p>{{ item.content }}</p>
+            <p>{{ item.published|date:'d.m.Y H:i:s' }}</p>
+        </div>
+        {% endfor %}
+
+    </body>
+</html>
