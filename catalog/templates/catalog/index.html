@@ -1,26 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Главная :: Каталог товаров</title>
-    </head>
-    <body>
-        <h1>Товары</h1>
-        <div>
-            <a href="/catalog/">Главная</a>
-            {% for type in types %}
-                <a href="/catalog/{{ type.pk }}">{{ type.name }}</a>
-            {% endfor %}
-        </div>
-        {% for item in items %}
-            <div>
-                <h2>{{ item.title }}</h2>
-                <p>{{ item.content }}</p>
-                <p><a href="/catalog/{{ item.type.pk }}/">
-                    {{ item.type.name }}</a></p>
-                <p>{{ item.published|date:"d.m.Y H:i:s" }}</p>
-            </div>
-        {% endfor %}
+{% extends 'layout/basic.html' %}
 
-    </body>
-</html>
+{% block content %}
+{% for type in types %}
+<div>
+    <h2>{{ type.title }}</h2>
+    <p>{{ type.content }}</p>
+    <p><a href="{% url 'by_type' type.pk %}">{{ type.name }}</a></p>
+    <p>{{ type.published|date:'d.m.Y H:i:s' }}</p>
+</div>
+{% endfor %}
+{% endblock %}
